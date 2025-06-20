@@ -1,0 +1,52 @@
+You got it! If you prefer to keep home.html as your main page instead of index.html, GitHub Pages can be configured to use it.
+
+Here's how to tell GitHub Pages to serve home.html as your default page:
+
+Ensure home.html is in the root of your repository:
+
+Before you do anything else, make sure your home.html file (along with all other HTML, CSS, and image files) is directly in the top-level directory of your GitHub repository. It shouldn't be in a subfolder.
+Go to your GitHub repository:
+
+Open your web browser and navigate to your repository on GitHub (github.com/yourusername/your-repo-name).
+Click on "Settings":
+
+This tab is usually near the top right of your repository's page.
+Click on "Pages" in the left sidebar:
+
+It's under the "Code and automation" section.
+Configure the Build and Deployment Source:
+
+Under the "Build and deployment" section:
+For "Source", ensure Deploy from a branch is selected.
+For "Branch", select main (or master, depending on your repository's default branch name) from the dropdown.
+For "Folder", ensure it's set to / (root).
+Crucial Step: Create a redirect (or direct link):
+Since GitHub Pages defaults to index.html, if it doesn't find it, it might show a 404. There are two primary ways to handle this when keeping home.html:
+
+Option A: Direct Link (Simplest, but requires users to type home.html)
+Your website will be live at https://yourusername.github.io/your-repo-name/home.html.
+This means anyone visiting https://yourusername.github.io/your-repo-name/ will likely get a 404, unless they specifically add /home.html to the URL.
+This isn't ideal for user experience.
+
+Option B: Create an index.html file that redirects to home.html (Recommended)
+This is the most common and user-friendly approach. You create a tiny index.html file whose only purpose is to immediately redirect the user to home.html.
+
+To do this (Recommended):
+a.  In the same folder as your home.html and other files, create a new file named index.html.
+b.  Open index.html with a text editor and paste the following code:
+
+  ```html
+  <!DOCTYPE html>
+  <html>
+  <head>
+      <title>Redirecting...</title>
+      <meta http-equiv="refresh" content="0; url=home.html">
+      <link rel="canonical" href="home.html" />
+  </head>
+  <body>
+      <p>If you are not redirected automatically, follow this <a href="home.html">link to our homepage</a>.</p>
+  </body>
+  </html>
+  ```
+  * `meta http-equiv="refresh" content="0; url=home.html"`: This tells the browser to redirect to `home.html` after 0 seconds.
+  * `<link rel="canonical" href="home.html" />`: This helps search engines understand that `home.html` is the primary version of this page, preventing duplicate content issues.
